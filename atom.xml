@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://daydreamer-li.github.io/</id>
+    <title>Daydreamer-Li&apos;s blog</title>
+    <updated>2022-07-22T09:20:39.496Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://daydreamer-li.github.io/"/>
+    <link rel="self" href="https://daydreamer-li.github.io/atom.xml"/>
+    <subtitle>路漫漫其修远兮，吾将上下而求索。</subtitle>
+    <logo>https://daydreamer-li.github.io/images/avatar.png</logo>
+    <icon>https://daydreamer-li.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2022, Daydreamer-Li&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[合并数据集之后的结果记录]]></title>
+        <id>https://daydreamer-li.github.io/post/dataset_and_result/</id>
+        <link href="https://daydreamer-li.github.io/post/dataset_and_result/">
+        </link>
+        <updated>2022-07-22T03:10:34.000Z</updated>
+        <summary type="html"><![CDATA[<p>包含OMAP\OMAPS合并数据集、MIDITest、PianoYT和Two Hands Hanon</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>包含OMAP\OMAPS合并数据集、MIDITest、PianoYT和Two Hands Hanon</p>
+<!-- more -->
+<p>首先对各个数据集进行介绍：<br>
+<strong>OMAP/OMAPS合并数据集</strong>：共206首，其中训练集146，验证集20，测试集40首<br>
+<strong>midiTest</strong>：8个业余钢琴家录制的视频，仅含视频<br>
+<strong>PianoYT</strong>: youtube的钢琴录制视频，共20多个小时，将数据分为209个训练验证，19个测试集<br>
+<strong>Two Hands Hanon</strong>：该数据集包含的和弦较少，挑战性较小，音符比MIDI测试集中的音符范围更小</p>
+<blockquote>
+<p>PianoYT需要自行在Youtube上下载视频并与谷歌的音频数据集对应；Two Hands Hanon未开源？</p>
+</blockquote>
+<p><strong>没有进行数据增强</strong><br>
+帧级精度</p>
+<table>
+<thead>
+<tr>
+<th>dataset</th>
+<th style="text-align:center">F1-measure</th>
+<th style="text-align:right">Precision</th>
+<th style="text-align:right">Recall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fusion</td>
+<td style="text-align:center">0.7627</td>
+<td style="text-align:right">0.8809</td>
+<td style="text-align:right">0.7013</td>
+</tr>
+<tr>
+<td>midiTest</td>
+<td style="text-align:center">0.1644</td>
+<td style="text-align:right">0.2658</td>
+<td style="text-align:right">0.1327</td>
+</tr>
+<tr>
+<td>PianoYT</td>
+<td style="text-align:center">暂无</td>
+<td style="text-align:right">暂无</td>
+<td style="text-align:right">暂无</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>数据说明：recall高漏检少，precision高多检少；即p低多检多，r低漏检多</p>
+</blockquote>
+<hr>
+<p>音符级精度</p>
+<table>
+<thead>
+<tr>
+<th>dataset</th>
+<th style="text-align:center">F1-measure</th>
+<th style="text-align:right">Precision</th>
+<th style="text-align:right">Recall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fusion</td>
+<td style="text-align:center">0.8828</td>
+<td style="text-align:right">0.9222</td>
+<td style="text-align:right">0.8511</td>
+</tr>
+<tr>
+<td>midiTest</td>
+<td style="text-align:center">centered</td>
+<td style="text-align:right">$12</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>PianoYT</td>
+<td style="text-align:center">暂无</td>
+<td style="text-align:right">暂无</td>
+<td style="text-align:right">暂无</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>进行了数据增强</strong><br>
+（暂未收敛）<br>
+帧级精度</p>
+<table>
+<thead>
+<tr>
+<th>dataset</th>
+<th style="text-align:center">F1-measure</th>
+<th style="text-align:right">Precision</th>
+<th style="text-align:right">Recall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fusion</td>
+<td style="text-align:center">0.7295</td>
+<td style="text-align:right">0.6379</td>
+<td style="text-align:right">0.8517</td>
+</tr>
+<tr>
+<td>midiTest</td>
+<td style="text-align:center">0.2128</td>
+<td style="text-align:right">0.3269</td>
+<td style="text-align:right">0.1961</td>
+</tr>
+<tr>
+<td>col 3 is</td>
+<td style="text-align:center">right-aligned</td>
+<td style="text-align:right">$1</td>
+<td style="text-align:right"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>音符级精度</p>
+<table>
+<thead>
+<tr>
+<th>dataset</th>
+<th style="text-align:center">F1-measure</th>
+<th style="text-align:right">Precision</th>
+<th style="text-align:right">Recall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fusion</td>
+<td style="text-align:center">0.8828</td>
+<td style="text-align:right">0.9222</td>
+<td style="text-align:right">0.8511</td>
+</tr>
+<tr>
+<td>midiTest</td>
+<td style="text-align:center">centered</td>
+<td style="text-align:right">$12</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>col 3 is</td>
+<td style="text-align:center">right-aligned</td>
+<td style="text-align:right">$1</td>
+<td style="text-align:right"></td>
+</tr>
+</tbody>
+</table>
+<p>conclusion:合并数据集和MIDItest中图片有较大差异，为了保留关键点和骨骼的信息，向下截取了50个像素点，而整张图送进去没有使用注意力信息，无法将网络训练关注在手指上，同时midiTest是固定图的大小，为提升midiTest精度可以把数据集上的图片进行这样的处理，但个人觉得没有必要。<br>
+<img src="https://daydreamer-li.github.io//post-images/1658481473351.jpg" alt="" title="midiTest示意图" loading="lazy"><br>
+<img src="https://daydreamer-li.github.io//post-images/1658481480183.jpg" alt="" title="OMAPS示意图" loading="lazy"><br>
+<img src="https://daydreamer-li.github.io//post-images/1658481484012.jpg" alt="" title="OMAP示意图" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[一些论文研读]]></title>
+        <id>https://daydreamer-li.github.io/post/thesis_study/</id>
+        <link href="https://daydreamer-li.github.io/post/thesis_study/">
+        </link>
+        <updated>2022-07-20T07:10:49.000Z</updated>
+        <summary type="html"><![CDATA[<p>包括F-T-LSTM、Uformer和视听多模态相关的论文学习</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>包括F-T-LSTM、Uformer和视听多模态相关的论文学习</p>
+<!-- more -->
+<h1 id="f-t-lstm">F-T-LSTM</h1>
+<h2 id="1-基本情况介绍">1. 基本情况介绍</h2>
+<p><strong>论文标题</strong>：F-T-LSTM based Complex Network for Joint Acoustic Echo   Cancellation and Speech Enhancement<br>
+<strong>From</strong>：西北工业大学计算机学院语音与语言处理组（ASLP@NPU)<br>
+<strong>项目地址</strong>：暂无<br>
+<strong>创新点</strong>：提出一种使用复杂神经网络的实时 AEC 方法，以更好地建模重要的相位信息和频率时间 LSTM (F-T-LSTM)，通过扫描频率和时间轴的方式，以实现更好的时间建模<br>
+<strong>关键词</strong>： Acoustic echo cancellation（AEC回声抵消）, complex network （复杂网络），nonlinear distortion（非线性失真）, noise suppression（噪声抑制）</p>
+<h2 id="2-论文核心内容">2. 论文核心内容</h2>
+<hr>
+<h1 id="uformer原理">Uformer原理</h1>
+<h2 id="1-基本情况介绍-2">1. 基本情况介绍</h2>
+<p><strong>论文标题</strong>:  Uformer: A General U-Shaped Transformer for Image Restoration<br>
+<strong>github项目地址</strong>: <a href="https://github.com/ZhendongWang6/Uformer">https://github.com/ZhendongWang6/Uformer</a></p>
+<hr>
+<h1 id="uformer可借用融合">Uformer可借用融合</h1>
+<p><strong>论文标题</strong>：UFORMER: A UNET BASED DILATED COMPLEX &amp; REAL DUAL-PATH CONFORMER NETWORK FOR SIMULTANEOUS SPEECH ENHANCEMENT AND DEREVERBERATION</p>
+<hr>
+<h1 id="音视频融合by-indian">音视频融合By Indian</h1>
+<h2 id="1-基本情况介绍-3">1. 基本情况介绍</h2>
+<p><strong>论文标题</strong>：WHAT MAKES THE SOUND?: A DUAL-MODALITY INTERACTING NETWORK FOR AUDIO-VISUAL EVENT LOCALIZATION<br>
+<strong>创新点</strong>:  提出了一种新的视听交互网络（AVIN），通过两种模态间的局部和全局信息，实现了模态间和模态内的交互</p>
+<h2 id="2-论文内容详读">2. 论文内容详读</h2>
+<figure data-type="image" tabindex="1"><img src="https://daydreamer-li.github.io//post-images/1658305526152.png" alt="网络结构示意图" title="网络结构示意图" loading="lazy"></figure>
+<blockquote>
+<p>一共包含六个步骤，</p>
+<ol>
+<li>使用CNN进行特征提取</li>
+<li>再使用LSTMs建模时间依赖性</li>
+<li>使用双线性池捕获两种模式之间的高层关联</li>
+<li>使用两种模态的局部和全局信息获得内部和内部模态交互<br>
+5.聚合所有的结果特征，通过dense layer传递连接输出</li>
+</ol>
+</blockquote>
+]]></content>
+    </entry>
+</feed>
