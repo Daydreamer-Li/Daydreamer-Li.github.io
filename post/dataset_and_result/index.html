@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>合并数据集之后的结果记录 | Daydreamer-Li&#39;s blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://daydreamer-li.github.io//favicon.ico?v=1664356335856">
+<link rel="stylesheet" href="https://daydreamer-li.github.io//styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="包含OMAP\OMAPS合并数据集、MIDITest、PianoYT和Two Hands Hanon
+
+首先对各个数据集进行介绍：
+OMAP/OMAPS合并数据集：共206首，其中训练集146，验证集20，测试集40首
+midiTest：8..." />
+    <meta name="keywords" content="result_saved" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://daydreamer-li.github.io/">
+        <img src="https://daydreamer-li.github.io//images/avatar.png?v=1664356335856" class="site-logo">
+        <h1 class="site-title">Daydreamer-Li&#39;s blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      路漫漫其修远兮，吾将上下而求索。
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://daydreamer-li.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">合并数据集之后的结果记录</h2>
+            <div class="post-date">2022-07-22</div>
+            
+            <div class="post-content" v-pre>
+              <p>包含OMAP\OMAPS合并数据集、MIDITest、PianoYT和Two Hands Hanon</p>
+<!-- more -->
+<p>首先对各个数据集进行介绍：<br>
+<strong>OMAP/OMAPS合并数据集</strong>：共206首，其中训练集146，验证集20，测试集40首<br>
+<strong>midiTest</strong>：8个业余钢琴家录制的视频，仅含视频<br>
+<strong>PianoYT</strong>: youtube的钢琴录制视频，共20多个小时，将数据分为209个训练验证，19个测试集<br>
+<strong>Two Hands Hanon</strong>：该数据集包含的和弦较少，挑战性较小，音符比MIDI测试集中的音符范围更小</p>
+<blockquote>
+<p>PianoYT需要自行在Youtube上下载视频并与谷歌的音频数据集对应；Two Hands Hanon未开源？</p>
+</blockquote>
+<p><strong>没有进行数据增强</strong><br>
+帧级精度</p>
+<table>
+<thead>
+<tr>
+<th>dataset</th>
+<th style="text-align:center">F1-measure</th>
+<th style="text-align:right">Precision</th>
+<th style="text-align:right">Recall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fusion</td>
+<td style="text-align:center">0.7627</td>
+<td style="text-align:right">0.8809</td>
+<td style="text-align:right">0.7013</td>
+</tr>
+<tr>
+<td>midiTest</td>
+<td style="text-align:center">0.1644</td>
+<td style="text-align:right">0.2658</td>
+<td style="text-align:right">0.1327</td>
+</tr>
+<tr>
+<td>PianoYT</td>
+<td style="text-align:center">暂无</td>
+<td style="text-align:right">暂无</td>
+<td style="text-align:right">暂无</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>数据说明：recall高漏检少，precision高多检少；即p低多检多，r低漏检多</p>
+</blockquote>
+<hr>
+<p>音符级精度</p>
+<table>
+<thead>
+<tr>
+<th>dataset</th>
+<th style="text-align:center">F1-measure</th>
+<th style="text-align:right">Precision</th>
+<th style="text-align:right">Recall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fusion</td>
+<td style="text-align:center">0.8828</td>
+<td style="text-align:right">0.9222</td>
+<td style="text-align:right">0.8511</td>
+</tr>
+<tr>
+<td>midiTest</td>
+<td style="text-align:center">0.012</td>
+<td style="text-align:right">0.047</td>
+<td style="text-align:right">0.010</td>
+</tr>
+<tr>
+<td>PianoYT</td>
+<td style="text-align:center">暂无</td>
+<td style="text-align:right">暂无</td>
+<td style="text-align:right">暂无</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>进行了数据增强</strong><br>
+（测试集F1=0.797）<br>
+帧级精度</p>
+<table>
+<thead>
+<tr>
+<th>dataset</th>
+<th style="text-align:center">F1-measure</th>
+<th style="text-align:right">Precision</th>
+<th style="text-align:right">Recall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fusion（F1=0.729）</td>
+<td style="text-align:center">0.7295</td>
+<td style="text-align:right">0.6379</td>
+<td style="text-align:right">0.8517</td>
+</tr>
+<tr>
+<td>fusion（F1=0.797）</td>
+<td style="text-align:center">0.7198</td>
+<td style="text-align:right">0.7858</td>
+<td style="text-align:right">0.6972</td>
+</tr>
+<tr>
+<td>midiTest（F1= 0.729）</td>
+<td style="text-align:center">0.2128</td>
+<td style="text-align:right">0.3269</td>
+<td style="text-align:right">0.1961</td>
+</tr>
+<tr>
+<td>midiTest（F1= 0.797）</td>
+<td style="text-align:center">0.1841</td>
+<td style="text-align:right">0.3014</td>
+<td style="text-align:right">0.1543</td>
+</tr>
+<tr>
+<td>col 3 is</td>
+<td style="text-align:center">right-aligned</td>
+<td style="text-align:right">$1</td>
+<td style="text-align:right"></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>音符级精度</p>
+<table>
+<thead>
+<tr>
+<th>dataset</th>
+<th style="text-align:center">F1-measure</th>
+<th style="text-align:right">Precision</th>
+<th style="text-align:right">Recall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fusion（F1=0.729）</td>
+<td style="text-align:center">0.7640</td>
+<td style="text-align:right">0.7489</td>
+<td style="text-align:right">0.7874</td>
+</tr>
+<tr>
+<td>fusion（F1=0.797）</td>
+<td style="text-align:center">0.7198</td>
+<td style="text-align:right">0.7858</td>
+<td style="text-align:right">0.6972</td>
+</tr>
+<tr>
+<td>midiTest（F1= 0.797）</td>
+<td style="text-align:center">0.0057</td>
+<td style="text-align:right">0.0067</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>col 3 is</td>
+<td style="text-align:center">right-aligned</td>
+<td style="text-align:right">$1</td>
+<td style="text-align:right"></td>
+</tr>
+</tbody>
+</table>
+<p>conclusion:合并数据集和MIDItest中图片有较大差异，为了保留关键点和骨骼的信息，向下截取了50个像素点，而整张图送进去没有使用注意力信息，无法将网络训练关注在手指上，同时midiTest是固定图的大小，为提升midiTest精度可以把数据集上的图片进行这样的处理，但个人觉得没有必要。<br>
+<img src="https://daydreamer-li.github.io//post-images/1658481473351.jpg" alt="" title="midiTest示意图" loading="lazy"><br>
+<img src="https://daydreamer-li.github.io//post-images/1658481480183.jpg" alt="" title="OMAPS示意图" loading="lazy"><br>
+<img src="https://daydreamer-li.github.io//post-images/1658481484012.jpg" alt="" title="OMAP示意图" loading="lazy"></p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://daydreamer-li.github.io/tag/4twIPrfqS/" class="tag">
+                    result_saved
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://daydreamer-li.github.io/post/thesis_study/">
+                  <h3 class="post-title">
+                    一些论文研读
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'db9099181f6c8d14f0a2',
+        clientSecret: '170f41e431a314a357b4d2074cd94248f55d4b52',
+        repo: 'Daydreamer-Li.github.io',
+        owner: 'Daydreamer-Li',
+        admin: ['Daydreamer-Li'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

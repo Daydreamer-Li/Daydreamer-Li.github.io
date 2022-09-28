@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>一些论文研读 | Daydreamer-Li&#39;s blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://daydreamer-li.github.io//favicon.ico?v=1664356335856">
+<link rel="stylesheet" href="https://daydreamer-li.github.io//styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="包括F-T-LSTM、Uformer和视听多模态相关的论文学习
+
+F-T-LSTM
+1. 基本情况介绍
+论文标题：F-T-LSTM based Complex Network for Joint Acoustic Echo   Cancel..." />
+    <meta name="keywords" content="Thesis study,ufromer,Audio_Visual_Fusion" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://daydreamer-li.github.io/">
+        <img src="https://daydreamer-li.github.io//images/avatar.png?v=1664356335856" class="site-logo">
+        <h1 class="site-title">Daydreamer-Li&#39;s blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      路漫漫其修远兮，吾将上下而求索。
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://daydreamer-li.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">一些论文研读</h2>
+            <div class="post-date">2022-07-20</div>
+            
+            <div class="post-content" v-pre>
+              <p>包括F-T-LSTM、Uformer和视听多模态相关的论文学习</p>
+<!-- more -->
+<h1 id="f-t-lstm">F-T-LSTM</h1>
+<h2 id="1-基本情况介绍">1. 基本情况介绍</h2>
+<p><strong>论文标题</strong>：F-T-LSTM based Complex Network for Joint Acoustic Echo   Cancellation and Speech Enhancement<br>
+<strong>From</strong>：西北工业大学计算机学院语音与语言处理组（ASLP@NPU)<br>
+<strong>项目地址</strong>：暂无<br>
+<strong>创新点</strong>：提出一种使用复杂神经网络的实时 AEC 方法，以更好地建模重要的相位信息和频率时间 LSTM (F-T-LSTM)，通过扫描频率和时间轴的方式，以实现更好的时间建模<br>
+<strong>关键词</strong>： Acoustic echo cancellation（AEC回声抵消）, complex network （复杂网络），nonlinear distortion（非线性失真）, noise suppression（噪声抑制）</p>
+<h2 id="2-论文核心内容">2. 论文核心内容</h2>
+<hr>
+<h1 id="uformer原理">Uformer原理</h1>
+<h2 id="1-基本情况介绍-2">1. 基本情况介绍</h2>
+<p><strong>论文标题</strong>:  Uformer: A General U-Shaped Transformer for Image Restoration<br>
+<strong>github项目地址</strong>: <a href="https://github.com/ZhendongWang6/Uformer">https://github.com/ZhendongWang6/Uformer</a></p>
+<hr>
+<h1 id="uformer可借用融合">Uformer可借用融合</h1>
+<p><strong>论文标题</strong>：UFORMER: A UNET BASED DILATED COMPLEX &amp; REAL DUAL-PATH CONFORMER NETWORK FOR SIMULTANEOUS SPEECH ENHANCEMENT AND DEREVERBERATION</p>
+<hr>
+<h1 id="音视频融合by-indian">音视频融合By Indian</h1>
+<h2 id="1-基本情况介绍-3">1. 基本情况介绍</h2>
+<p><strong>论文标题</strong>：WHAT MAKES THE SOUND?: A DUAL-MODALITY INTERACTING NETWORK FOR AUDIO-VISUAL EVENT LOCALIZATION<br>
+<strong>创新点</strong>:  提出了一种新的视听交互网络（AVIN），通过两种模态间的局部和全局信息，实现了模态间和模态内的交互</p>
+<h2 id="2-论文内容详读">2. 论文内容详读</h2>
+<figure data-type="image" tabindex="1"><img src="https://daydreamer-li.github.io//post-images/1658305526152.png" alt="网络结构示意图" title="网络结构示意图" loading="lazy"></figure>
+<blockquote>
+<p>一共包含六个步骤，</p>
+<ol>
+<li>使用CNN进行特征提取</li>
+<li>再使用LSTMs建模时间依赖性</li>
+<li>使用双线性池捕获两种模式之间的高层关联</li>
+<li>使用两种模态的局部和全局信息获得内部和内部模态交互<br>
+5.聚合所有的结果特征，通过dense layer传递连接输出</li>
+</ol>
+</blockquote>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://daydreamer-li.github.io/tag/YZ1G-IKW7/" class="tag">
+                    Thesis study
+                  </a>
+                
+                  <a href="https://daydreamer-li.github.io/tag/7Fq3SPtxc/" class="tag">
+                    ufromer
+                  </a>
+                
+                  <a href="https://daydreamer-li.github.io/tag/q4C7QkxJc/" class="tag">
+                    Audio_Visual_Fusion
+                  </a>
+                
+              </div>
+            
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'db9099181f6c8d14f0a2',
+        clientSecret: '170f41e431a314a357b4d2074cd94248f55d4b52',
+        repo: 'Daydreamer-Li.github.io',
+        owner: 'Daydreamer-Li',
+        admin: ['Daydreamer-Li'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

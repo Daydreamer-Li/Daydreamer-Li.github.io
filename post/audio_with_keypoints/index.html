@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>音频与视频关键点初步融合结果记录 | Daydreamer-Li&#39;s blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://daydreamer-li.github.io//favicon.ico?v=1664356335856">
+<link rel="stylesheet" href="https://daydreamer-li.github.io//styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="记录纯音频模型和加上不同融合方法的转录结果
+
+基础音频转录
+（训练集：OMAPS:80 测试集：OMAPS:26，验证集：OMAP,直接用在OMAPS预训练好的模型在OMAP上训练）
+onset阈值0.15 纯音频
+模型地址：&quot;/..." />
+    <meta name="keywords" content="result_saved,Audio_Visual_Fusion" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://daydreamer-li.github.io/">
+        <img src="https://daydreamer-li.github.io//images/avatar.png?v=1664356335856" class="site-logo">
+        <h1 class="site-title">Daydreamer-Li&#39;s blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      路漫漫其修远兮，吾将上下而求索。
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://daydreamer-li.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">音频与视频关键点初步融合结果记录</h2>
+            <div class="post-date">2022-09-22</div>
+            
+            <div class="post-content" v-pre>
+              <p>记录纯音频模型和加上不同融合方法的转录结果</p>
+<!-- more -->
+<h2 id="基础音频转录">基础音频转录</h2>
+<p>（训练集：OMAPS:80 测试集：OMAPS:26，验证集：OMAP,直接用在OMAPS预训练好的模型在OMAP上训练）<br>
+onset阈值0.15 纯音频<br>
+模型地址：&quot;/home/data/liyuqing/bysj_new/onsets-and-frames-master/onsets-and-frames-master/runs/use_for_test220916-100632/model-0.9103.pt&quot;</p>
+<table>
+<thead>
+<tr>
+<th>dataset</th>
+<th style="text-align:center">F1-measure</th>
+<th style="text-align:right">Precision</th>
+<th style="text-align:right">Recall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OMAP</td>
+<td style="text-align:center">0.8544</td>
+<td style="text-align:right">0.9343</td>
+<td style="text-align:right">0.7912</td>
+</tr>
+<tr>
+<td>OMAPS</td>
+<td style="text-align:center">0.9164</td>
+<td style="text-align:right">0.9531</td>
+<td style="text-align:right">0.8843</td>
+</tr>
+</tbody>
+</table>
+<h2 id="基础音频转录加入视频数据的分支">基础音频转录加入视频数据的分支</h2>
+<p>（即在使用BiLTSM之前加入视频的标签提高Recall)<br>
+onset阈值0.15 音频和关键点共同作用<br>
+模型地址：<br>
+&quot;/home/data/liyuqing/code_VAF/onsets-and-frames-master/runs/one_video_label-220830-143538/model-0.8963.pt&quot;</p>
+<table>
+<thead>
+<tr>
+<th>dataset</th>
+<th style="text-align:center">F1-measure</th>
+<th style="text-align:right">Precision</th>
+<th style="text-align:right">Recall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OMAP</td>
+<td style="text-align:center">0.8509</td>
+<td style="text-align:right">0.8682</td>
+<td style="text-align:right">0.8371</td>
+</tr>
+<tr>
+<td>OMAPS</td>
+<td style="text-align:center">0.9032</td>
+<td style="text-align:right">0.9174</td>
+<td style="text-align:right">0.8904</td>
+</tr>
+</tbody>
+</table>
+<p>可以看到视频信息对于解决漏检问题有一定帮助，但目前弊大于利，需要选择更合适的方式融合视频帧对应的信息。</p>
+<h2 id="在基础音频转录加入视频数据的分支的基础上做后处理">在基础音频转录加入视频数据的分支的基础上做后处理</h2>
+<p>（即将视频标签外的音符去除）</p>
+<table>
+<thead>
+<tr>
+<th>dataset</th>
+<th style="text-align:center">F1-measure</th>
+<th style="text-align:right">Precision</th>
+<th style="text-align:right">Recall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OMAP</td>
+<td style="text-align:center">0.8641</td>
+<td style="text-align:right">0.9058</td>
+<td style="text-align:right">0.8287</td>
+</tr>
+<tr>
+<td>OMAPS</td>
+<td style="text-align:center">0.9057</td>
+<td style="text-align:right">0.9336</td>
+<td style="text-align:right">0.8806</td>
+</tr>
+</tbody>
+</table>
+<p>OMAP相较于无后处理有一定提升，相较于纯音频只提升了1%<br>
+OMAPS相较于纯音频不升反降，与无后处理的音视频初步融合结果基本持平</p>
+<h2 id="阐明一下阈值选取为015的原因">阐明一下阈值选取为0.15的原因</h2>
+<p>记录一下onset阈值为0.5的结果，在该阈值下的结果不符合实验预期，经过对比选择后最终Onset的阈值选取为0.15<br>
+纯音频</p>
+<table>
+<thead>
+<tr>
+<th>dataset</th>
+<th style="text-align:center">F1-measure</th>
+<th style="text-align:right">Precision</th>
+<th style="text-align:right">Recall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OMAP</td>
+<td style="text-align:center">0.8242</td>
+<td style="text-align:right">0.9577</td>
+<td style="text-align:right">0.7292</td>
+</tr>
+<tr>
+<td>OMAPS</td>
+<td style="text-align:center">0.8938</td>
+<td style="text-align:right">0.9797</td>
+<td style="text-align:right">0.8259</td>
+</tr>
+</tbody>
+</table>
+<p>音频和视频初步融合</p>
+<table>
+<thead>
+<tr>
+<th>dataset</th>
+<th style="text-align:center">F1-measure</th>
+<th style="text-align:right">Precision</th>
+<th style="text-align:right">Recall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OMAP</td>
+<td style="text-align:center">0.7651</td>
+<td style="text-align:right">0.9665</td>
+<td style="text-align:right">0.6405</td>
+</tr>
+<tr>
+<td>OMAPS</td>
+<td style="text-align:center">0.8389</td>
+<td style="text-align:right">0.9860</td>
+<td style="text-align:right">0.7352</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>统计数据（在OMAP数据集根据纯音频模型的转录结果进行相应统计）</p>
+<ol>
+<li>各个琴键被按下的概率<br>
+<img src="https://daydreamer-li.github.io//post-images/1663902300340.png" alt="" loading="lazy"><br>
+可以看到我们的数据集中，按键频率呈高斯分布，其中白键按下概率高于黑键</li>
+<li>纯音频下的多检漏检统计<br>
+漏检统计<br>
+<img src="https://daydreamer-li.github.io//post-images/1663917459588.png" alt="" loading="lazy"><br>
+可以看到越靠近中间的漏检越多，尤以40最为突出，59、33也与琴键按下概率不一致，目前暂未发现特殊规律。<br>
+多检统计<br>
+<img src="https://daydreamer-li.github.io//post-images/1663917455009.png" alt="" loading="lazy"><br>
+多检个数整体较少，没有可比性</li>
+</ol>
+<hr>
+<h2 id="采用概率平均融合策略尝试即给视频的分支相应的少一点权重">采用概率平均融合策略尝试（即给视频的分支相应的少一点权重）</h2>
+<p>为避免过拟合的模型在OMAP上有不好效果，已经对各个训练过程中f1较高的几个模型进行挑选<br>
+模型地址：&quot;/home/data/liyuqing/code_VAF/onsets-and-frames-master/runs/loss_with_video_label-220926-203911/model-0.9207.pt&quot;</p>
+<table>
+<thead>
+<tr>
+<th>dataset</th>
+<th style="text-align:center">F1-measure</th>
+<th style="text-align:right">Precision</th>
+<th style="text-align:right">Recall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OMAP</td>
+<td style="text-align:center">0.8559</td>
+<td style="text-align:right">0.9191</td>
+<td style="text-align:right">0.8042</td>
+</tr>
+<tr>
+<td>OMAPS</td>
+<td style="text-align:center">0.9065</td>
+<td style="text-align:right">0.9365</td>
+<td style="text-align:right">0.8801</td>
+</tr>
+</tbody>
+</table>
+<p>通过按键频率对loss函数给予相应权重</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://daydreamer-li.github.io/tag/4twIPrfqS/" class="tag">
+                    result_saved
+                  </a>
+                
+                  <a href="https://daydreamer-li.github.io/tag/q4C7QkxJc/" class="tag">
+                    Audio_Visual_Fusion
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://daydreamer-li.github.io/post/self-attention-code-by-myself/">
+                  <h3 class="post-title">
+                    self-attention网络搭建
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'db9099181f6c8d14f0a2',
+        clientSecret: '170f41e431a314a357b4d2074cd94248f55d4b52',
+        repo: 'Daydreamer-Li.github.io',
+        owner: 'Daydreamer-Li',
+        admin: ['Daydreamer-Li'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
